@@ -1,7 +1,5 @@
 const express = require('express');
-
 const expressLayouts = require("express-ejs-layouts");
-
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const contactRoutes = require('./routes/contactRoutes');
@@ -12,14 +10,15 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-
-
 // View Engine and Templates
-
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // not at views root
 
+// Index route
+app.get("/", function(req, res) {
+  res.render("index", { title: "Home" });
+});
 
 // Routes
 app.use('/api/contacts', contactRoutes);
