@@ -1,6 +1,143 @@
-/******* Change Box Model ***************/
+/******* Global Styles ***************/
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/******* Container Styling ***************/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/******* Header & Navigation ***************/
+header {
+  background-color: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background: #003366;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+nav a:hover {
+  background: #0056b3;
+}
+
+/******* Hero Section ***************/
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ddd;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.hero img {
+  max-width: 50%;
+  height: auto;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h2 {
+  font-size: 28px;
+  color: #004080;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #cc5500;
+}
+
+/******* Upgrades & Reviews ***************/
+.upgrades, .reviews {
+  margin-top: 40px;
+}
+
+.upgrades img, .reviews img {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.reviews blockquote {
+  font-style: italic;
+  border-left: 5px solid #004080;
+  padding-left: 10px;
+}
+
+/******* Footer ***************/
+footer {
+  text-align: center;
+  background: #004080;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/******* Responsive Design ***************/
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    max-width: 80%;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    padding: 10px;
+  }
 }
