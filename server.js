@@ -1,31 +1,17 @@
 const express = require('express');
-const expressLayouts = require("express-ejs-layouts");
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const contactRoutes = require('./routes/contactRoutes');
-const staticRoutes = require('./routes/staticRoutes'); // Import static routes
-
-dotenv.config();
-connectDB();
-
 const app = express();
-app.use(express.json());
+const path = require('path');
+const homeRouter = require('./routes/home'); // Adjust the path if needed
 
-// Use Static Routes
-app.use(staticRoutes);
+// Set the view engine to EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// View Engine and Templates
-app.set("view engine", "ejs");
-app.use(expressLayouts);
-app.set("layout", "./layouts/layout");
+// Use the home router
+app.use('/', homeRouter);
 
-// Index route
-app.get("/", function(req, res) {
-  res.render("index", { title: "Home" });
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-// API Routes
-app.use('/api/contacts', contactRoutes);
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
